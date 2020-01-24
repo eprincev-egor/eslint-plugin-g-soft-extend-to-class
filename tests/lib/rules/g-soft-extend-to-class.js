@@ -28,6 +28,29 @@ ruleTester.run("g-soft-extend-to-class", rule, {
         {
             code: `
 BaseTask.extend("MyTask", {
+    a() {},
+    b() {}
+})
+            `.trim(),
+            output: `
+class MyTask extends BaseTask {
+    a() {
+        
+    }
+
+    b() {
+        
+    }
+
+}
+            `.trim(),
+            errors: [
+                { messageId: "oldTaskStyleNotAllowed" }
+            ]
+        },
+        {
+            code: `
+BaseTask.extend("MyTask", {
     elems: ["a", "b"],
     is: ["sea"]
 })
@@ -58,6 +81,7 @@ class MyTask extends BaseTask {
 
         this.x = x;
     }
+
 }
             `.trim(),
             errors: [
@@ -77,6 +101,7 @@ class MyTask extends BaseTask {
     onRenderGrid(x, y = 1) {
         this.elems.grid;
     }
+
 }
                     `.trim(),
             errors: [
@@ -96,6 +121,7 @@ class MyTask extends BaseTask {
     onRenderGrid() {
         this.elems.grid;
     }
+
 }
             `.trim(),
             errors: [
@@ -117,6 +143,7 @@ class MyTask extends BaseTask {
 
         this.params = params;
     }
+
 }
             `.trim(),
             errors: [
