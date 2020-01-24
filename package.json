@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-g-soft-extend-to-class",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "eslint plugin for convert BaseTask.extend() to class and Form.extends to class",
   "keywords": [
     "eslint",
