@@ -28,6 +28,26 @@ ruleTester.run("g-soft-extend-to-class", rule, {
         {
             code: `
 BaseTask.extend("MyTask", {
+    async preload() {
+        await x();
+    }
+})
+            `.trim(),
+            output: `
+class MyTask extends BaseTask {
+    async preload() {
+        await x();
+    }
+
+}
+            `.trim(),
+            errors: [
+                { messageId: "oldTaskStyleNotAllowed" }
+            ]
+        },
+        {
+            code: `
+BaseTask.extend("MyTask", {
     a() {},
     b() {}
 })
